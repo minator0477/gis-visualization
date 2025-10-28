@@ -12,20 +12,12 @@ chrome_options.add_argument("--headless")
 # Chromeドライバのパスを指定
 service = Service('/usr/local/bin/chromedriver')
 
-prefectures_kata = ["hokkaido", \
-"aomori","iwate","miyagi","akita","yamagata","fukushima", \
-"ibaraki","tochigi","gunma","saitama","chiba","tokyo","kanagawa", \
-"niigata","toyama","ishikawa","fukui","yamanashi","nagano","gifu","shizuoka","aichi", \
-"mie","shiga","kyoto","osaka","hyogo","nara","wakayama", \
-"tottori","shimane","okayama","hiroshima","yamaguchi", \
-"tokushima","kagawa","ehime","kochi", \
-"fukuoka","saga","nagasaki","kumamoto","oita","miyazaki","kagoshima","okinawa"]
-
-for prefecture in prefectures_kata:
+for i in range(33):
+    # for prefecture in prefectures_kata:
     driver = webdriver.Chrome(service=service, options=chrome_options)
-    print(prefecture)
+    # print(prefecture)
     # ページを開く
-    url = f"https://store.starbucks.co.jp/pref/{prefecture}/"
+    url = f"https://r.gnavi.co.jp/brand/fd077b2e/?p={i}"
 
     driver.get(url)
 
@@ -38,7 +30,7 @@ for prefecture in prefectures_kata:
     html_source = driver.page_source
 
     # HTMLをファイルに保存（後で解析可能）
-    ofile = f"{prefecture}.html"
+    ofile = f"starbucks-coffee_{i:02d}.html"
     with open(ofile, "w", encoding="utf-8") as f:
         f.write(html_source)
 

@@ -11,10 +11,10 @@ prefectures_kata = ["hokkaido", \
 "tokushima","kagawa","ehime","kochi", \
 "fukuoka","saga","nagasaki","kumamoto","oita","miyazaki","kagoshima","okinawa"]
 # 1. ローカルに保存した index.html を開く
-for i in range(33):
+for i in range(10):
 # for i in range(1):
 
-    with open(f"starbucks-coffee_{i:02d}.html", "r", encoding="utf-8") as f:
+    with open(f"St-Marc_{i:02d}.html", "r", encoding="utf-8") as f:
         html = f.read()
 
 # 2. BeautifulSoup で解析
@@ -50,6 +50,6 @@ for i in range(33):
     df["latitude"] = lats
     df["longitude"] = lons
 
-    ofile = f"starbucks-coffee_{i:02d}.csv"
+    ofile = f"St-Marc_{i:02d}.csv"
     df.to_csv(ofile, index=False, na_rep="NaN")
     print(f"ofile: {ofile}")
